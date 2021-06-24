@@ -22,7 +22,7 @@ spec:
       containers:
         - name: mtls
           image: "drgrove/mtls-server:v0.14.2"
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           env:
             - name: FQDN
               value: "example.com"
@@ -53,6 +53,11 @@ spec:
               mountPath: /home/mtls/secrets/admin_gnupg/
               subPath: "admin_gnupg"
               readOnly: false
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - "ALL"
           livenessProbe:
             httpGet:
               path: /version
