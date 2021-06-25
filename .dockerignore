@@ -6,3 +6,8 @@ test_*.py
 config.ini
 *.pyc
 __pycache__
+.drone.yml
+.drone.jsonnet
+manifests/*
+.coverage
+.coveragerc
